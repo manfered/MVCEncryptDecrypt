@@ -1,0 +1,117 @@
+﻿@{
+    ViewBag.Title = "MVCEn";
+}
+
+<div class="jumbotron">
+    <h1>ASP.NET MVC Encryption/Decryption</h1>
+    <p class="lead">The app uses Advanced Encryption Standard, also known by its original name Rijndael to cipher and decipher given data.</p>
+    <p>The JSON return result of Ajax form will be shown by jQuery in form elements.</p>
+    <p>License free project. and example has been provided below.</p>
+</div>
+
+
+<div class="row">
+
+    <div class="col-sm-12 col-md-6 item-margin">
+
+        <div class="div-center">
+
+
+
+            @using (Ajax.BeginForm("Encrypt", "Home", new AjaxOptions() { HttpMethod = "POST" }, new { enctype = "multipart/form-data" }))
+            {
+
+                @Html.TextBox("stringtoEncrypt", null, new
+           {
+               @class = "form-control item-margin",
+               required = "",
+               type = "text",
+               placeholder = "enter desired text",
+               autocomplete = "off"
+           })
+
+
+                @Html.TextBox("Password", null, new
+           {
+               @class = "form-control item-margin",
+               required = "",
+               type = "text",
+               placeholder = "enter Password",
+               autocomplete = "off"
+           })
+
+                @Html.TextArea("encryptTextArea", null, new
+           {
+               @class = "form-control item-margin",
+               placeholder = "Encrypted text result",
+               autocomplete = "off",
+               rows = "4",
+               @readonly = "true"
+           })
+
+                <input type="submit" value="Encrypt" class="btn btn-block" />
+
+            }
+
+        </div>
+
+    </div>
+
+    <div class="col-sm-12 col-md-6">
+
+        <div class="div-center">
+
+
+
+            @using (Ajax.BeginForm("Decrypt", "Home", new AjaxOptions() { HttpMethod = "POST" }, new { enctype = "multipart/form-data" }))
+            {
+
+
+                @Html.TextArea("encryptedText", null, new
+           {
+               @class = "form-control item-margin",
+               placeholder = "Encrypted text here",
+               required = "",
+               autocomplete = "off",
+               rows = "4",
+           })
+
+                @Html.TextBox("encryptPassword", null, new
+           {
+               @class = "form-control item-margin",
+               required = "",
+               type = "text",
+               placeholder = "enter Password",
+               autocomplete = "off"
+           })
+
+                @Html.TextBox("decryptText", null, new
+           {
+               @class = "form-control item-margin",
+               type = "text",
+               placeholder = "Decrypted text here",
+               autocomplete = "off",
+               @readonly = "true"
+           })
+
+
+
+
+
+
+                <input type="submit" value="Decrypt" class="btn btn-block" />
+
+            }
+
+        </div>
+
+    </div>
+
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/jquery.form.js"></script>
+    <script src="~/Scripts/EncryptDecrypt.js"></script>
+}
